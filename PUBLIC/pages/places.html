@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Heritage Places</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==========================================
+         NAVIGATION BAR
+         ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            GeoHistory
+        </div>
+
+        <nav>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="places.html">
+                Explore Places
+            </a>
+
+            <a href="map.html">
+                Map
+            </a>
+
+            <a href="assistant.html">
+                AI Assistant
+            </a>
+
+            <a href="../login.html" class="login-btn">
+                Login
+            </a>
+
+            <select id="languageSelector" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+</select>
+        </nav>
+
+    </header>
+
+
+    <!-- ==========================================
+         EXPLORE HERITAGE PLACES
+         ========================================== -->
+
+    <section class="heritage-section">
+
+        <h2>
+            Explore Heritage Places
+        </h2>
+
+        <p>
+            Discover historical and cultural places around you.
+        </p>
+
+        <br>
+        <section class="location-section">
+
+    <h2>Smart Heritage Notification</h2>
+
+    <p>
+        Detect your location and find nearby heritage places.
+    </p>
+
+    <button onclick="detectLocation()">
+        📍 Detect My Location
+    </button>
+
+    <button onclick="enableNotifications()">
+        🔔 Enable Smart Notifications
+    </button>
+
+    <p id="locationResult"></p>
+
+</section>
+
+
+        <!-- ==========================================
+             HERITAGE CARDS
+             
+             IMPORTANT:
+             Cards will be created automatically
+             by heritage.js from MySQL database.
+             ========================================== -->
+
+        <div class="heritage-container" id="placesContainer">
+
+            <!-- Heritage places will load here -->
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 AI-Powered GeoHistory Alert
+        </p>
+
+        <p>
+            Smart Heritage Tourism Guide
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script src="../js/main.js"></script>
+
+    <script src="../js/heritage.js"></script>
+    <script src="../js/notification.js"></script>
+    <script src="../js/gps.js"></script>
+     <script src="../js/language.js"></script>
+    
+    
+    <script>
+function enableNotifications() {
+
+    if (!("Notification" in window)) {
+
+        alert("This browser does not support notifications.");
+        return;
+    }
+
+    Notification.requestPermission().then(function(permission) {
+
+        if (permission === "granted") {
+
+            new Notification("🏛️ GeoHistory Alert", {
+                body: "Smart Heritage Notifications are now enabled!"
+            });
+
+        } 
+        else if (permission === "denied") {
+
+            alert("Notification permission was denied.");
+
+        }
+
+    });
+}
+</script>
+
+
+</body>
+
+</html>

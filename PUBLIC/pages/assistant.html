@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Heritage Assistant</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f1ec;
+        }
+
+        header {
+            background: #6b2d0c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #6b2d0c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #answer {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eeeeee;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>AI Heritage Assistant</h1>
+
+    <p>
+        Ask questions about Indian heritage places
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <h2>Ask AI</h2>
+
+    <textarea
+        id="question"
+        placeholder="Example: Tell me about Gateway of India">
+    </textarea>
+
+
+    <button onclick="askAI()">
+        Ask AI
+    </button>
+
+
+    <div id="answer">
+        AI response will appear here.
+    </div>
+
+</div>
+
+
+<script src="../js/ai.js"></script>
+
+</body>
+
+</html>

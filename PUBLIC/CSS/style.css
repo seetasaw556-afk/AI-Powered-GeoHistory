@@ -1,0 +1,657 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f4ef;
+    color: #333;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #7b4b25;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #9b642f;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    background: #7b4b25;
+    color: white !important;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 550px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 60px 8%;
+
+    background:
+        linear-gradient(
+            rgba(60, 40, 20, 0.65),
+            rgba(60, 40, 20, 0.65)
+        ),
+        url("../images/heritage-bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 650px;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-buttons button {
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #d89b45;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.hero-buttons button:hover {
+    opacity: 0.85;
+}
+
+.location-btn {
+    background: white !important;
+    color: #7b4b25 !important;
+}
+
+
+/* FEATURES */
+
+.features {
+    padding: 70px 8%;
+    text-align: center;
+    background: white;
+}
+
+.features h2,
+.heritage-section h2,
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.feature-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 30px 20px;
+
+    border-radius: 10px;
+
+    background: #f8f1e7;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+    color: #7b4b25;
+}
+
+.feature-card p {
+    line-height: 1.6;
+}
+
+
+/* HERITAGE */
+
+.heritage-section {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+.heritage-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.heritage-card {
+    background: white;
+
+    padding-bottom: 25px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.1);
+}
+
+.heritage-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.heritage-card h3 {
+    margin: 20px 10px 10px;
+}
+
+.heritage-card p {
+    padding: 0 20px;
+    line-height: 1.5;
+}
+
+.heritage-card button {
+    margin-top: 20px;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #7b4b25;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding: 70px 15%;
+
+    text-align: center;
+
+    background: #efe4d3;
+}
+
+.about p {
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    background: #2f241b;
+
+    color: white;
+}
+
+footer p {
+    margin: 5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .feature-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .heritage-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .feature-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+
+/* ============================= */
+/* HERITAGE PLACE DETAILS */
+/* ============================= */
+
+.place-details {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    padding: 60px 8%;
+
+    background: #f7f4ef;
+
+    align-items: center;
+
+}
+
+
+.place-image-box {
+
+    width: 100%;
+
+    height: 450px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+}
+
+
+.place-image-box img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.place-information h1 {
+
+    font-size: 42px;
+
+    color: #7b4b25;
+
+    margin-bottom: 15px;
+
+}
+
+
+.place-information > p {
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+}
+
+
+.info-box {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+
+.info-box h3 {
+
+    color: #7b4b25;
+
+    margin-bottom: 10px;
+
+}
+
+
+.info-box p {
+
+    line-height: 1.7;
+
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+}
+
+
+.info-item {
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+
+}
+
+
+.info-item h3 {
+
+    font-size: 17px;
+
+    color: #7b4b25;
+
+    margin-bottom: 8px;
+
+}
+
+
+.info-item p {
+
+    line-height: 1.5;
+
+}
+
+
+.detail-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.detail-buttons button {
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #7b4b25;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+
+.detail-buttons button:hover {
+
+    opacity: 0.85;
+
+}
+
+
+.extra-information {
+
+    padding: 60px 15%;
+
+    background: white;
+
+    text-align: center;
+
+}
+
+
+.extra-information h2 {
+
+    color: #7b4b25;
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.extra-information p {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+@media (max-width: 800px) {
+
+    .place-details {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .place-image-box {
+
+        height: 300px;
+
+    }
+
+    .place-information h1 {
+
+        font-size: 32px;
+
+    }
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+}
+/* ============================= */
+/* PHOTO GALLERY */
+/* ============================= */
+
+.photo-gallery {
+    padding: 30px 8%;
+    background: white;
+    text-align: center;
+}
+
+.photo-gallery h2 {
+    color: #7b4b25;
+    margin-bottom: 20px;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.gallery-container img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+}
+/* ==========================================
+   HERITAGE PLACE CARDS
+   ========================================== */
+
+.heritage-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+
+
+/* Each card same height */
+
+.heritage-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Same image box size for all places */
+
+.heritage-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+/* All images same size */
+
+.heritage-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Description area */
+
+.heritage-card p {
+    margin-bottom: 10px;
+}
+
+
+/* Keep button at bottom */
+
+.heritage-card .view-details-btn {
+    margin-top: auto;
+    cursor: pointer;
+}
+/* ===== HERITAGE PLACE DETAIL IMAGE ===== */
+
+.place-image-box {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 auto 25px auto;
+}
+
+.place-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}

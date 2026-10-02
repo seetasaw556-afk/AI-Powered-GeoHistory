@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Heritage Place Details</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            GeoHistory
+        </div>
+
+        <nav>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="places.html">
+                Explore Places
+            </a>
+
+            <a href="map.html">
+                Map
+            </a>
+
+            <a href="assistant.html">
+                AI Assistant
+            </a>
+
+            <a href="../login.html"
+               class="login-btn">
+                Login
+            </a>
+
+            <select id="languageSelector" onchange="changeLanguage(); changePlaceDetailsLanguage();">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="mr">मराठी</option>
+            </select>
+
+        </nav>
+
+    </header>
+
+
+    <!-- PLACE DETAILS -->
+
+    <section class="place-details">
+
+        <div class="place-image-box">
+
+            <img id="placeImage"
+                 src="../images/gateway.jpg"
+                 alt="Heritage Place">
+
+        </div>
+
+
+        <div class="place-information">
+
+            <h1 id="placeName">
+                Gateway of India
+            </h1>
+
+            <p id="placeDescription">
+                A famous historical monument located in Mumbai.
+            </p>
+
+
+            <div class="info-box">
+
+                <h3 id="historyTitle">📖 History</h3>
+
+                <p id="placeHistory">
+                    The Gateway of India is a historic monument
+                    located in Mumbai and is one of the
+                    recognised landmarks of the city.
+                </p>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-item">
+
+                    <h3 id="locationTitle">📍 Location</h3>
+
+                    <p id="placeLocation">
+                        Mumbai, Maharashtra
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <h3 id="entryFeeTitle">💰 Entry Fee</h3>
+
+                    <p id="entryFee">
+                        Free
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <h3 id="visitingHoursTitle">🕐 Visiting Hours</h3>
+
+                    <p id="visitingHours">
+                        Open 24 Hours
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <h3 id="categoryTitle">🏛 Category</h3>
+
+                    <p id="category">
+                        Historical Monument
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-buttons">
+
+                <button id="viewMapButton" onclick="openMap()">
+                    🗺 View on Map
+                </button>
+
+                <button id="audioGuideButton" onclick="playAudio()">
+                    🔊 Audio Guide
+                </button>
+
+                <button id="savePlaceButton" onclick="savePlace()">
+                    ❤️ Save Place
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MORE PHOTOS -->
+
+    <section class="photo-gallery">
+
+        <h2>📸 More Photos</h2>
+
+        <div class="gallery-container">
+        </div>
+
+    </section>
+
+
+    <!-- EXTRA INFORMATION -->
+
+    <section class="extra-information">
+
+        <h2 id="extraInfoTitle">About This Heritage Place</h2>
+
+        <p id="extraInfo">
+            Discover the historical importance,
+            architecture and cultural significance
+            of this heritage location.
+        </p>
+
+    </section>
+
+
+    <script src="../js/place-details.js"></script>
+    <script src="../js/language.js"></script>
+
+
+</body>
+</html>
+
+
+<div class="detail-buttons">
+
+    <button onclick="openMap()">
+        🗺 View on Map
+    </button>
+
+    <button onclick="playAudio()">
+        🔊 Audio Guide
+    </button>
+
+    <button onclick="savePlace()">
+        ❤️ Save Place
+    </button>
+
+    <button onclick="detectLocation()">
+        📍 Detect My Location
+    </button>
+
+</div>
+
+<div id="locationResult" class="location-result">
+    Click "Detect My Location" to find your current location.
+</div>

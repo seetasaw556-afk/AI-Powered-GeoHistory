@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoHistory - Admin Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #1f3c88;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        #logoutBtn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        /* DASHBOARD */
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #1f3c88;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* SECTION */
+
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #1f3c88;
+            margin-bottom: 20px;
+        }
+
+        /* ADD BUTTON */
+
+        .add-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        /* TABLE */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1f3c88;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* EDIT / DELETE */
+
+        .edit-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* FORM */
+
+        #placeForm {
+            display: none;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        #placeForm h3 {
+            margin-bottom: 15px;
+            color: #1f3c88;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .save-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cancel-btn {
+            background: #777;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🏛️ GeoHistory Admin Panel</h1>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </header>
+
+
+    <div class="container">
+
+        <!-- DASHBOARD -->
+
+        <div class="dashboard">
+
+            <div class="card">
+
+                <h2>Heritage Places</h2>
+
+                <p id="placeCount">0</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Registered Users</h2>
+
+                <p id="userCount">0</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Admin</h2>
+
+                <p>✓</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERITAGE PLACES -->
+
+        <div class="section">
+
+            <h2>🏛️ Heritage Places Management</h2>
+
+            <button
+                class="add-btn"
+                onclick="showAddForm()">
+
+                + Add New Heritage Place
+
+            </button>
+
+
+            <!-- ADD / EDIT FORM -->
+
+            <div id="placeForm">
+
+                <h3 id="formTitle">
+                    Add New Heritage Place
+                </h3>
+
+                <input
+                    type="hidden"
+                    id="placeId">
+
+
+                <div class="form-group">
+
+                    <label>Place Name</label>
+
+                    <input
+                        type="text"
+                        id="placeName"
+                        placeholder="Enter place name">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Description</label>
+
+                    <textarea
+                        id="placeDescription"
+                        placeholder="Enter description"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>History</label>
+
+                    <textarea
+                        id="placeHistory"
+                        placeholder="Enter history"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Location</label>
+
+                    <input
+                        type="text"
+                        id="placeLocation"
+                        placeholder="Enter location">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Latitude</label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="placeLatitude"
+                        placeholder="Enter latitude">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Longitude</label>
+
+                    <input
+                        type="number"
+                        step="any"
+                        id="placeLongitude"
+                        placeholder="Enter longitude">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Entry Fee</label>
+
+                    <input
+                        type="text"
+                        id="placeFee"
+                        placeholder="Enter entry fee">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Opening Hours</label>
+
+                    <input
+                        type="text"
+                        id="placeHours"
+                        placeholder="Enter opening hours">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        id="placeCategory"
+                        placeholder="Enter category">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Image File Name</label>
+
+                    <input
+                        type="text"
+                        id="placeImage"
+                        placeholder="Example: gateway.jpg">
+
+                </div>
+
+
+                <button
+                    class="save-btn"
+                    onclick="savePlace()">
+
+                    Save Place
+
+                </button>
+
+
+                <button
+                    class="cancel-btn"
+                    onclick="hideForm()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+
+            <!-- PLACES TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Place Name</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="placesTable">
+
+                        <tr>
+
+                            <td colspan="5">
+                                Loading places...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- REGISTERED USERS -->
+
+        <div class="section">
+
+            <h2>👥 Registered Users</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Created At</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="usersTable">
+
+                        <tr>
+
+                            <td colspan="4">
+                                Loading users...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN JAVASCRIPT -->
+
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoHistory Alert</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            GeoHistory
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="pages/places.html">
+                Explore Places
+            </a>
+
+            <a href="pages/map.html">Map</a>
+
+            <a href="pages/assistant.html">AI Assistant</a>
+            
+            <a href="login.html" class="login-btn">
+                login
+                <a href="/pages/register.html">Register</a>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Discover Heritage
+                <br>
+                Around You
+            </h1>
+
+            <p>
+                Explore historical places using GPS,
+                interactive maps, AI-generated stories
+                and smart heritage alerts.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button onclick="exploreHeritage()">
+                    Explore Heritage
+                </button>
+
+
+                <button
+                    onclick="detectLocation()"
+                    class="location-btn">
+
+                    Detect My Location
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <h2>
+            Smart Heritage Experience
+        </h2>
+
+
+        <div class="feature-container">
+
+
+            <div class="feature-card">
+
+                <h3>
+                    📍 GPS & Geo-Fencing
+                </h3>
+
+                <p>
+                    Find heritage places near your
+                    current location and receive
+                    location-based alerts.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <h3>
+                    🤖 AI Heritage Assistant
+                </h3>
+
+                <p>
+                    Ask questions and learn historical
+                    information using our AI-powered
+                    assistant.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <h3>
+                    🗺 Interactive Maps
+                </h3>
+
+                <p>
+                    Explore heritage locations using
+                    interactive digital maps.
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <h3>
+                    🌐 Multilingual
+                </h3>
+
+                <p>
+                    Access heritage information in
+                    English, Hindi and Marathi.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- POPULAR HERITAGE PLACES -->
+
+    <section class="heritage-section">
+
+        <h2>
+            Popular Heritage Places
+        </h2>
+
+
+        <div class="heritage-container">
+
+
+            <!-- Gateway of India -->
+
+            <div class="heritage-card">
+
+                <div class="heritage-image">
+                    🏛️
+                </div>
+
+                <h3>
+                    Gateway of India
+                </h3>
+
+                <p>
+                    A famous historical monument
+                    located in Mumbai.
+                </p>
+
+                <button onclick="viewPlace('Gateway of India')">
+                    View Details
+                </button>
+
+            </div>
+
+
+
+            <!-- CSMT -->
+
+            <div class="heritage-card">
+
+                <div class="heritage-image">
+                    🚉
+                </div>
+
+                <h3>
+                    Chhatrapati Shivaji Maharaj Terminus
+                </h3>
+
+                <p>
+                    A historic railway terminus and
+                    UNESCO World Heritage Site.
+                </p>
+
+                <button onclick="viewPlace('CSMT')">
+                    View Details
+                </button>
+
+            </div>
+
+
+
+            <!-- Elephanta Caves -->
+
+            <div class="heritage-card">
+
+                <div class="heritage-image">
+                    🗿
+                </div>
+
+                <h3>
+                    Elephanta Caves
+                </h3>
+
+                <p>
+                    Ancient rock-cut caves situated
+                    near Mumbai.
+                </p>
+
+                <button onclick="viewPlace('Elephanta Caves')">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ABOUT -->
+
+    <section class="about">
+
+        <h2>
+            About GeoHistory Alert
+        </h2>
+
+        <p>
+            GeoHistory Alert is a smart heritage
+            tourism guide that combines GPS,
+            geo-fencing, maps and artificial
+            intelligence to provide interactive
+            historical information to tourists.
+        </p>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 AI-Powered GeoHistory Alert
+        </p>
+
+        <p>
+            Smart Heritage Tourism Guide
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

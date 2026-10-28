@@ -31,7 +31,7 @@ const places = {
         audio:
             "../audio/gateway.mp3",
 
-        gallery: [
+       gallery : [
             "../images/gateway.jpg",
             "../images/gateway2.jpg",
             "../images/gateway3.jpg",

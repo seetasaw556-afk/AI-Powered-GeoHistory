@@ -112,3 +112,75 @@ function deletePlace(id) {
         alert("Unable to delete place");
     });
 }
+function loadUserRegistrationChart() {
+
+    fetch("/api/admin/user-stats")
+        .then(response => response.json())
+        .then(data => {
+
+            if (!data.success) {
+                console.error("Unable to load user statistics");
+                return;
+            }
+
+            const labels = data.stats.map(item => item.date);
+            const counts = data.stats.map(item => item.count);
+
+            const canvas =
+                document.getElementById("userRegistrationChart");
+
+            if (!canvas) {
+                console.error("Chart canvas not found");
+                return;
+            }
+
+            const ctx = canvas.getContext("2d");
+
+            new Chart(ctx, {
+                type: "line",
+
+                data: {
+                    labels: labels,
+
+                    datasets: [{
+                        label: "Registered Users",
+                        data: counts,
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    }]
+                },
+
+                options: {
+                    responsive: true,
+
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            title: {
+                                display: true,
+                                text: "Number of Users"
+                            }
+                        },
+
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Registration Date"
+                            }
+                        }
+                    }
+                }
+            });
+        })
+
+        .catch(error => {
+            console.error("User chart error:", error);
+        });
+}
+document.addEventListener("DOMContentLoaded", function () {
+    loadUserRegistrationChart();
+});

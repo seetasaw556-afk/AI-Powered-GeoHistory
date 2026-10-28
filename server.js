@@ -32,7 +32,7 @@ const { email, password } = req.body;
     }
 
     const sql =
-        "SELECT id, name, email, role_number FROM users WHERE email = ? AND password = ?";
+        "SELECT id, name, email, role FROM users WHERE email = ? AND password = ?";
 
     db.query(
         sql,
@@ -483,6 +483,32 @@ app.get("/api/admin/users", (req, res) => {
         res.json({
             success: true,
             users: results
+        });
+    });
+});
+app.get("/api/admin/user-stats", (req, res) => {
+    const sql = `
+        SELECT 
+            DATE(created_at) AS date,
+            COUNT(*) AS count
+        FROM users
+        GROUP BY DATE(created_at)
+        ORDER BY DATE(created_at)
+    `;
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error("User stats error:", err);
+
+            return res.status(500).json({
+                success: false,
+                message: "Unable to load user statistics"
+            });
+        }
+
+        res.json({
+            success: true,
+            stats: results
         });
     });
 });

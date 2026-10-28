@@ -13,10 +13,12 @@ async function askHeritageAI(question) {
             apiKey: process.env.GEMINI_API_KEY
         });
 
-        // Try up to 3 times if Gemini temporarily returns 503
-        for (let attempt = 1; attempt <= 3; attempt++) {
+        // Retry temporary Gemini errors
+        const maxAttempts = 5;
+
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
             try {
-                console.log(`AI attempt ${attempt}`);
+                console.log(`AI attempt ${attempt}/${maxAttempts}`);
 
                 const response = await ai.models.generateContent({
                     model: "gemini-3.8-flash",
@@ -28,29 +30,48 @@ User question:
 ${question}`
                 });
 
-                console.log("AI response received");
+                console.log("AI response received successfully");
 
                 return response.text;
 
             } catch (error) {
-                console.error(`AI attempt ${attempt} failed:`, error.message);
+                const errorMessage = error?.message || String(error);
 
-                // Retry only for temporary server/capacity errors
-                if (
-                    error.message.includes("503") ||
-                    error.message.includes("UNAVAILABLE")
-                ) {
-                    if (attempt < 3) {
-                        console.log("Temporary Gemini problem. Retrying...");
-                        await new Promise(resolve =>
-                            setTimeout(resolve, attempt * 3000)
-                        );
-                    } else {
-                        throw error;
-                    }
-                } else {
+                console.error(
+                    `AI attempt ${attempt} failed:`,
+                    errorMessage
+                );
+
+                // Temporary errors that can be retried
+                const isTemporaryError =
+                    errorMessage.includes("503") ||
+                    errorMessage.includes("UNAVAILABLE") ||
+                    errorMessage.includes("429") ||
+                    errorMessage.includes("RESOURCE_EXHAUSTED") ||
+                    errorMessage.includes("500") ||
+                    errorMessage.includes("INTERNAL");
+
+                if (!isTemporaryError) {
                     throw error;
                 }
+
+                // If this was the final attempt, stop retrying
+                if (attempt === maxAttempts) {
+                    throw new Error(
+                        "Gemini AI is temporarily unavailable. Please try again after a short while."
+                    );
+                }
+
+                // Exponential backoff: 2s, 4s, 8s
+                const delay = 2000 * Math.pow(2, attempt - 1);
+
+                console.log(
+                    `Temporary Gemini error. Retrying in ${delay / 1000} seconds...`
+                );
+
+                await new Promise(resolve =>
+                    setTimeout(resolve, delay)
+                );
             }
         }
 
